@@ -5,14 +5,15 @@ export const theme = createTheme({
     mode: 'dark',
     background: {
       default: '#2C4251',
-      paper: '#283e4d',
+      paper: '#1d2d37',
     },
     text: {
       primary: '#ffffff',
+      secondary: '#cac9c9',
     },
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: '#99e1d9',
+      main: '#8dcbc2',
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
     },
