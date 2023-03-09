@@ -17,7 +17,6 @@ const initialStory = {
   by: '',
   time: 0,
   score: 0,
-  url: '',
 };
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -31,7 +30,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const StyledTitle = styled(Typography)(({ theme }) => ({
+const StyledTitle = styled(Typography)(() => ({
   flexGrow: '1',
   fontSize: '20px',
   textDecoration: 'none',

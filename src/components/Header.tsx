@@ -1,10 +1,9 @@
 import { styled } from '@mui/system';
-import { Typography, Container } from '@mui/material';
-import { relative } from 'path';
+import { Container } from '@mui/material';
 
 const StyledHeader = styled('header')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
-  minHeight: '70px',
+  height: '70px',
   color: theme.palette.primary.main,
   padding: '10px 0',
 }));
@@ -13,7 +12,7 @@ const StyledLogo = styled('header')(({ theme }) => ({
   position: 'relative',
   fontSize: '20px',
   fontWeight: 600,
-  padding: '5px 0 0 15px',
+  padding: '0 0 0 15px',
   textTransform: 'uppercase',
   '&::before': {
     position: 'absolute',
@@ -30,10 +29,13 @@ const StyledLogo = styled('header')(({ theme }) => ({
 const LogoUp = styled('p')(({ theme }) => ({
   margin: 0,
   fontSize: '20px',
+  lineHeight: '22px',
   color: theme.palette.primary.main,
 }));
+
 const LogoDown = styled('p')(({ theme }) => ({
   margin: 0,
+  lineHeight: '25px',
   fontSize: '24px',
   letterSpacing: '5px',
   color: theme.palette.secondary.main,
