@@ -1,19 +1,16 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
-
-export interface IMenuProps {
-  isOpened: boolean;
-  toggleMenu: () => void;
-}
+import { Container } from '@mui/system';
 
 export function Layout() {
   return (
     <>
       <Header />
-      <main className="main">
+      <Container component="main" sx={{ flexGrow: '1' }}>
+        <h1 className="visually-hidden">Hacker news</h1>
         <Outlet />
-      </main>
+      </Container>
       <Footer />
     </>
   );

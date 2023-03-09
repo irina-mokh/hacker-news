@@ -1,15 +1,39 @@
-import GithubIcon from '../assets/icons/gh.svg';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { Link, Typography } from '@mui/material';
+import { styled } from '@mui/system';
+
+const StyledFooter = styled('footer')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-evenly',
+  padding: '10px 0',
+  height: '50px',
+  fontSize: '14px',
+  color: theme.palette.text,
+  backgroundColor: theme.palette.background.paper,
+}));
+
+const StyledGH = styled(Link)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  textDecoration: 'none',
+  color: 'inherit',
+  ':hover': {
+    color: theme.palette.primary.main,
+  },
+  ':active': {
+    color: theme.palette.primary.dark,
+  },
+}));
 
 export const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="container">
-        <a className="gh" href="https://github.com/irina-mokh" target="_blank">
-          <img src={GithubIcon} width={26} className="gh__icon"></img>
-          <span className="gh__text">irina-mokh</span>
-        </a>
-        <span className="footer__text">2023</span>
-      </div>
-    </footer>
+    <StyledFooter>
+      <StyledGH href="https://github.com/irina-mokh" target="_blank">
+        <GitHubIcon sx={{ marginRight: '5px' }}></GitHubIcon>
+        irina-mokh
+      </StyledGH>
+      <Typography>2023</Typography>
+    </StyledFooter>
   );
 };

@@ -3,11 +3,11 @@ import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import { HomePage } from '../pages/Home';
 import { ArticlePage } from '../pages/Article';
 import { Layout } from './Layout';
+import { Box } from '@mui/material';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="visually-hidden">Hacker news</h1>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -16,7 +16,7 @@ function App() {
           </Route>
         </Routes>
       </Router>
-    </div>
+    </Box>
   );
 }
 
