@@ -21,9 +21,10 @@ const initialStory = {
 };
 
 const StyledPaper = styled(Paper)(() => ({
-  padding: '30px',
+  padding: '15px',
   flexGrow: '1',
   margin: '10px 0',
+  overflow: 'hidden',
 }));
 
 const StyledText = styled(Typography)(({ theme }) => ({
