@@ -1,9 +1,11 @@
-import { Box, Typography, Button, Paper } from '@mui/material';
-import { styled } from '@mui/system';
-import { axiosClient } from '../utils/axios';
 import { useState, useEffect } from 'react';
+
+import { axiosClient } from '../utils/axios';
 import { IComment } from '../types';
 import { convertUnixTime } from '../utils';
+
+import { Box, Typography, Button, Paper } from '@mui/material';
+import { styled } from '@mui/system';
 
 const initialComment = {
   by: '',

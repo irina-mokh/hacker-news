@@ -1,11 +1,13 @@
-import { axiosClient } from '../utils/axios';
 import { useState, useEffect } from 'react';
-import { IStoryDetail } from '../types';
 import { useParams } from 'react-router-dom';
-import { Paper, Box, Link, Typography, Button, Breadcrumbs } from '@mui/material';
-import { convertUnixTime } from '../utils';
-import { styled } from '@mui/system';
+import { axiosClient } from '../utils/axios';
+
 import { Comment } from '../components/Comment';
+import { convertUnixTime } from '../utils';
+import { IStoryDetail } from '../types';
+
+import { Paper, Box, Link, Typography, Button, Breadcrumbs } from '@mui/material';
+import { styled } from '@mui/system';
 
 const initialStory = {
   id: 0,

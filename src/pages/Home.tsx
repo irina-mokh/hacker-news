@@ -1,8 +1,9 @@
-import { StoryThumb } from '../components/StoryThumb';
-import { Button, Grid, Box, CircularProgress } from '@mui/material';
-
-import { axiosClient } from '../utils/axios';
 import { useEffect, useState } from 'react';
+import { axiosClient } from '../utils/axios';
+
+import { StoryThumb } from '../components/StoryThumb';
+
+import { Button, Grid, Box, CircularProgress } from '@mui/material';
 
 export const HomePage = () => {
   const [data, setData] = useState<Array<number>>([]);
@@ -22,10 +23,12 @@ export const HomePage = () => {
       clearInterval(timer);
     };
   });
+
   useEffect(() => {
     fetchStories();
   }, []);
-  const elems = data.map((id) => (
+
+  const items = data.map((id) => (
     <Grid
       item
       xs={12}
@@ -38,6 +41,7 @@ export const HomePage = () => {
       <StoryThumb id={id}></StoryThumb>
     </Grid>
   ));
+
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -50,7 +54,7 @@ export const HomePage = () => {
         <CircularProgress sx={{ margin: 'auto' }}></CircularProgress>
       ) : (
         <Grid container spacing={2} component="ul" p={0} justifyContent="space-between">
-          {elems}
+          {items}
         </Grid>
       )}
     </>

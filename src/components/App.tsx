@@ -1,12 +1,9 @@
-// import React from 'react';
-// import { Route, Routes, BrowserRouter as Router, createBrowserRouter, RouterProvider } from 'react-router-dom';
-// import { HomePage } from '../pages/Home';
-// import { StoryPage } from '../pages/Story';
-// import { Layout } from './Layout';
-import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
+
 import { Header } from './Header';
 import { Footer } from './Footer';
+
+import { Box } from '@mui/material';
 import { Container } from '@mui/system';
 
 function App() {

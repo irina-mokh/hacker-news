@@ -1,10 +1,12 @@
-import { Card, Typography, Box, CircularProgress } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
 import { IStory } from '../types';
 import { convertUnixTime } from '../utils';
 import { axiosClient } from '../utils/axios';
+
 import { styled } from '@mui/system';
+import { Card, Typography, Box, CircularProgress } from '@mui/material';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 type StoryThumbProps = {
@@ -23,18 +25,19 @@ const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  padding: '20px',
+  padding: '10px',
   fontSize: '14px',
-  minHeight: '170px',
+  minHeight: '100px',
   backgroundColor: theme.palette.background.paper,
   color: theme.palette.text.secondary,
 }));
 
-const StyledTitle = styled(Typography)(() => ({
+const StyledTitle = styled(Typography)(({ theme }) => ({
   flexGrow: '1',
-  fontSize: '20px',
+  fontSize: '16px',
   textDecoration: 'none',
   fontWeight: 600,
+  color: theme.palette.text.primary,
 }));
 
 const StyledText = styled(Typography)(({ theme }) => ({
