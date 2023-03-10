@@ -8,12 +8,13 @@ const StyledHeader = styled('header')(({ theme }) => ({
   padding: '10px 0',
 }));
 
-const StyledLogo = styled('header')(({ theme }) => ({
+const StyledLogo = styled('a')(({ theme }) => ({
   position: 'relative',
   fontSize: '20px',
   fontWeight: 600,
   padding: '0 0 0 15px',
   textTransform: 'uppercase',
+  textDecoration: 'none',
   '&::before': {
     position: 'absolute',
     content: '""',
@@ -45,7 +46,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <Container sx={{ display: 'flex', alignItems: 'center' }}>
-        <StyledLogo>
+        <StyledLogo href="/">
           <LogoUp>Hacker</LogoUp>
           <LogoDown>news</LogoDown>
         </StyledLogo>
