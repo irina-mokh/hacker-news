@@ -6,7 +6,7 @@ import { Comment } from '../components/Comment';
 import { convertUnixTime } from '../utils';
 import { IStoryDetail } from '../types';
 
-import { Paper, Box, Link, Typography, Button, Breadcrumbs } from '@mui/material';
+import { Paper, Box, Link, Typography, Button, Breadcrumbs, CircularProgress } from '@mui/material';
 import { styled } from '@mui/system';
 
 const initialStory = {
@@ -21,7 +21,7 @@ const initialStory = {
 };
 
 const StyledPaper = styled(Paper)(() => ({
-  padding: '15px',
+  padding: '20px',
   flexGrow: '1',
   margin: '10px 0',
   overflow: 'hidden',
@@ -71,38 +71,42 @@ export const StoryPage = () => {
         </Link>
         <Typography color="text.primary">{title}</Typography>
       </Breadcrumbs>
-      <StyledPaper>
-        <Typography variant="h3" sx={{ fontSize: '30px', fontWeight: 600 }}>
-          {title}
-        </Typography>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4 }}>
-          <Button variant="outlined">
-            <Link href={url} target="_blank" underline="none">
-              Source link
-            </Link>
-          </Button>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-            <StyledText>{by}</StyledText>
-            <Typography>{convertUnixTime(time)}</Typography>
-          </Box>
-        </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography variant="h4" fontSize={22} m={0} color="secondary.main">
-            {descendants ? `Comments (${descendants}):` : `No comments found`}
+      {title ? (
+        <StyledPaper>
+          <Typography variant="h3" sx={{ fontSize: '30px', fontWeight: 600 }}>
+            {title}
           </Typography>
-          <Button
-            variant="outlined"
-            onClick={() => {
-              fetchKids(id);
-            }}
-          >
-            update
-          </Button>
-        </Box>
-        <Paper component="ul" elevation={1} sx={{ p: 0 }}>
-          {comments}
-        </Paper>
-      </StyledPaper>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4 }}>
+            <Button variant="outlined">
+              <Link href={url} target="_blank" underline="none">
+                Source link
+              </Link>
+            </Button>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+              <StyledText>{by}</StyledText>
+              <Typography>{convertUnixTime(time)}</Typography>
+            </Box>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Typography variant="h4" fontSize={22} m={0} color="secondary.main">
+              {descendants ? `Comments (${descendants}):` : `No comments found`}
+            </Typography>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                fetchKids(id);
+              }}
+            >
+              update
+            </Button>
+          </Box>
+          <Paper component="ul" elevation={1} sx={{ p: 0 }}>
+            {comments}
+          </Paper>
+        </StyledPaper>
+      ) : (
+        <CircularProgress sx={{ margin: 'auto' }}></CircularProgress>
+      )}
     </Box>
   );
 };

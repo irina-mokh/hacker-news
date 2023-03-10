@@ -27,7 +27,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   justifyContent: 'space-between',
   padding: '10px',
   fontSize: '14px',
-  minHeight: '100px',
+  minHeight: '120px',
   backgroundColor: theme.palette.background.paper,
   color: theme.palette.text.secondary,
 }));
