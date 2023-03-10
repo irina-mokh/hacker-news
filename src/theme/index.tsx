@@ -9,7 +9,7 @@ export const theme = createTheme({
     },
     text: {
       primary: '#ffffff',
-      secondary: '#cac9c9',
+      secondary: '#bbbaba',
     },
     primary: {
       // light: will be calculated from palette.primary.main,

@@ -1,17 +1,19 @@
 import { StoryThumb } from '../components/StoryThumb';
-import { Button, Grid, Box } from '@mui/material';
+import { Button, Grid, Box, CircularProgress } from '@mui/material';
 
 import { axiosClient } from '../utils/axios';
 import { useEffect, useState } from 'react';
 
 export const HomePage = () => {
   const [data, setData] = useState<Array<number>>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchStories = async () => {
     const res = await axiosClient.get('/newstories.json');
     const sortedIds = res.data.sort((a: number, b: number) => b - a).slice(0, 100);
 
     setData([...sortedIds]);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -44,9 +46,13 @@ export const HomePage = () => {
           Refresh
         </Button>
       </Box>
-      <Grid container spacing={2} component="ul" p={0} justifyContent="space-between">
-        {elems}
-      </Grid>
+      {isLoading ? (
+        <CircularProgress sx={{ margin: 'auto' }}></CircularProgress>
+      ) : (
+        <Grid container spacing={2} component="ul" p={0} justifyContent="space-between">
+          {elems}
+        </Grid>
+      )}
     </>
   );
 };

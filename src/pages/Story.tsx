@@ -18,7 +18,7 @@ const initialStory = {
   descendants: 0,
 };
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
+const StyledPaper = styled(Paper)(() => ({
   padding: '30px',
   flexGrow: '1',
   margin: '10px 0',
@@ -42,7 +42,6 @@ export const StoryPage = () => {
   const fetchKids = async (id: number) => {
     const res = await axiosClient.get(`/item/${id}.json`);
     if (res.data.kids) {
-      console.log('!!new comments!');
       setStory({ ...story, kids: [...res.data.kids] });
     }
   };
@@ -52,11 +51,14 @@ export const StoryPage = () => {
   }, []);
 
   const comments = kids
-    ? kids.map((id: number) => (
-        <li key={id} style={{ listStyle: 'none' }}>
-          <Comment id={id} />
-        </li>
-      ))
+    ? kids
+        // sort by latest
+        .sort((a, b) => b - a)
+        .map((id: number) => (
+          <li key={id} style={{ listStyle: 'none' }}>
+            <Comment id={id} />
+          </li>
+        ))
     : null;
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
@@ -71,15 +73,15 @@ export const StoryPage = () => {
           {title}
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4 }}>
-          <Box>
-            <StyledText>{by}</StyledText>
-            <Typography>{convertUnixTime(time)}</Typography>
-          </Box>
           <Button variant="outlined">
             <Link href={url} target="_blank" underline="none">
               Source link
             </Link>
           </Button>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+            <StyledText>{by}</StyledText>
+            <Typography>{convertUnixTime(time)}</Typography>
+          </Box>
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography variant="h4" fontSize={22} m={0} color="secondary.main">
@@ -94,9 +96,9 @@ export const StoryPage = () => {
             update
           </Button>
         </Box>
-        <Box component="ul" sx={{ p: 0 }}>
+        <Paper component="ul" elevation={1} sx={{ p: 0 }}>
           {comments}
-        </Box>
+        </Paper>
       </StyledPaper>
     </Box>
   );

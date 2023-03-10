@@ -1,4 +1,4 @@
-import { Card, Typography, Box } from '@mui/material';
+import { Card, Typography, Box, CircularProgress } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IStory } from '../types';
@@ -67,17 +67,25 @@ export const StoryThumb = ({ id }: StoryThumbProps) => {
   return (
     <Link to={`/stories/${id}`} style={{ textDecoration: 'none' }}>
       <StyledCard>
-        <StyledTitle variant="h3">{title}</StyledTitle>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-          <Box>
-            <StyledText>{by}</StyledText>
-            <Typography>{convertUnixTime(time)}</Typography>
-          </Box>
-          <StyledScore>
-            <StarBorderIcon sx={{ mr: '3px' }}></StarBorderIcon>
-            {score}
-          </StyledScore>
-        </Box>
+        {id && title ? (
+          <>
+            <StyledTitle variant="h3">{title}</StyledTitle>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+              <Box>
+                <StyledText>{by}</StyledText>
+                <Typography color="text.secondary" fontSize={14}>
+                  {convertUnixTime(time)}
+                </Typography>
+              </Box>
+              <StyledScore>
+                <StarBorderIcon sx={{ mr: '3px' }}></StarBorderIcon>
+                {score}
+              </StyledScore>
+            </Box>
+          </>
+        ) : (
+          <CircularProgress sx={{ margin: 'auto' }}></CircularProgress>
+        )}
       </StyledCard>
     </Link>
   );

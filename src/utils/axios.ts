@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const axiosClient = axios.create({
   baseURL: 'https://hacker-news.firebaseio.com/v0/',
-  timeout: 5000,
+  timeout: 7000,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
